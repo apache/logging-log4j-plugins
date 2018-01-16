@@ -18,7 +18,6 @@
  * Log4j plugins for Apache Avro.
  *
  * @see <a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#AvroLayout">Avro Layout manual</a>
- * @see <a href="https://logging.apache.org/log4j/2.x/manual/appenders.html#AvroAppender">Avro Appender manual</a>
  * @since 2.11.0
  */
 package org.apache.logging.log4j.avro;
