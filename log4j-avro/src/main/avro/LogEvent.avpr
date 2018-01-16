@@ -1,0 +1,253 @@
+{
+  "namespace": "org.apache.logging.log4j.avro",
+  "protocol": "LogEvent",
+  "types": [
+    {
+      "name": "Marker",
+      "doc": "Markers are objects that are used to add easily filterable information to log messages",
+      "type": "record",
+      "fields": [
+        {
+          "name": "name",
+          "doc": "The name of this Marker",
+          "type": "string"
+        },
+        {
+          "name": "parents",
+          "doc": "a list of parents of this Marker",
+          "type": {
+            "type": "array",
+            "items": "Marker"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Source",
+      "type": "record",
+      "fields": [
+        {
+          "name": "file",
+          "doc": "The name of the source file containing the execution point",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "line",
+          "doc": "The line number of the source line containing the execution point, or a negative number if this information is unavailable",
+          "type": "int"
+        },
+        {
+          "name": "class",
+          "doc": "The fully qualified name of the class containing the execution point",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "doc": "The name of the method containing the execution point",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ExtendedStackTraceElement",
+      "type": "record",
+      "fields": [
+        {
+          "name": "class",
+          "doc": "The fully qualified name of the class containing the execution point",
+          "type": "string"
+        },
+        {
+          "name": "exact",
+          "type": "boolean"
+        },
+        {
+          "name": "file",
+          "doc": "The name of the source file containing the execution point",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "line",
+          "doc": "The line number of the source line containing the execution point, or a negative number if this information is unavailable",
+          "type": "int"
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "doc": "The name of the method containing the execution point",
+          "type": "string"
+        },
+        {
+          "name": "version",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "namespace": "org.apache.logging.log4j.avro",
+      "name": "Thrown",
+      "type": "record",
+      "fields": [
+        {
+          "name": "cause",
+          "doc": "The throwable that caused this throwable to get thrown",
+          "type": [
+            "null",
+            "Thrown"
+          ]
+        },
+        {
+          "name": "commonElementCount",
+          "doc": "The number of elements that are being omitted because they are common with the parent Throwable's stack trace",
+          "type": "int"
+        },
+        {
+          "name": "extendedStackTrace",
+          "doc": "The stack trace including packaging information",
+          "type": {
+            "type": "array",
+            "items": "ExtendedStackTraceElement"
+          }
+        },
+        {
+          "name": "localizedMessage",
+          "doc": "A localized description of this throwable",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "message",
+          "doc": "The detail message string of this throwable",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "name",
+          "doc": "The FQCN of the Throwable",
+          "type": "string"
+        },
+        {
+          "name": "suppressed",
+          "doc": "The suppressed Throwables",
+          "type": {
+            "type": "array",
+            "items": "Thrown"
+          }
+        }
+      ]
+    },
+    {
+      "name": "LogEvent",
+      "doc": "Log4j log event",
+      "type": "record",
+      "fields": [
+        {
+          "name": "contextMap",
+          "doc": "The context map (also know as Mapped Diagnostic Context or MDC)",
+          "type": {
+            "type": "map",
+            "values": "string"
+          }
+        },
+        {
+          "name": "contextStack",
+          "doc": "The context stack (also known as Nested Diagnostic Context or NDC)",
+          "type": {
+            "type": "array",
+            "items": "string"
+          }
+        },
+        {
+          "name": "loggerFqcn",
+          "doc": "The fully qualified class name of the caller of the logging API",
+          "type": "string"
+        },
+        {
+          "name": "level",
+          "doc": "The level",
+          "type": "string"
+        },
+        {
+          "name": "loggerName",
+          "doc": "The logger name",
+          "type": "string"
+        },
+        {
+          "name": "marker",
+          "doc": "The Marker associated with the event",
+          "type": [
+            "null",
+            "Marker"
+          ]
+        },
+        {
+          "name": "message",
+          "doc": "The message associated with the event",
+          "type": "string"
+        },
+        {
+          "name": "timeMillis",
+          "doc": "The event time in milliseconds since midnight, January 1, 1970 UTC",
+          "type": "long"
+        },
+        {
+          "name": "source",
+          "doc": "The source of logging request",
+          "type": [
+            "null",
+            "Source"
+          ]
+        },
+        {
+          "name": "thread",
+          "doc": "The thread name",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "threadId",
+          "doc": "The thread ID",
+          "type": "long"
+        },
+        {
+          "name": "threadPriority",
+          "doc": "The thread priority",
+          "type": "int"
+        },
+        {
+          "name": "thrown",
+          "doc": "The throwable associated with logging request",
+          "type": [
+            "null",
+            "Thrown"
+          ]
+        },
+        {
+          "name": "endOfBatch",
+          "doc": "if this event is the last one in a batch",
+          "type": "boolean"
+        },
+        {
+          "name": "nanoTime",
+          "doc": "the value of the running Java Virtual Machine's high-resolution time source when this event was created",
+          "type": "long"
+        }
+      ]
+    }
+  ]
+}

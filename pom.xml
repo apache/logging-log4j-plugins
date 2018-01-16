@@ -239,6 +239,12 @@
       </dependency>
 
       <dependency>
+        <groupId>org.apache.avro</groupId>
+        <artifactId>avro</artifactId>
+        <version>1.8.2</version>
+      </dependency>
+
+      <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.12</version>
@@ -394,6 +400,11 @@
               </goals>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro-maven-plugin</artifactId>
+          <version>1.8.2</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -733,6 +744,7 @@
     </site>
   </distributionManagement>
   <modules>
+    <module>log4j-avro</module>
   </modules>
   <profiles>
     <profile>
